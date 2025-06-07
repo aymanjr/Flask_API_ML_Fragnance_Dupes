@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dupe Results for {{ original_fragrance }} | Fragrance Dupes Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fragrance Dupes Finder</h1>
+            <p class="subtitle">Find affordable alternatives to your favorite fragrances</p>
+        </header>
+        
+        <main>
+            <section class="results-header">
+                <h2>Results for "{{ original_fragrance }}"</h2>
+                <a href="/" class="back-button">New Search</a>
+            </section>
+            
+            {% if dupes %}
+                <section class="dupes-section">
+                    {% for dupe in dupes %}
+                        <div class="dupe-card">
+                            <div class="dupe-header">
+                                <h3 class="dupe-name">{{ dupe.name }}</h3>
+                                <span class="dupe-brand">{{ dupe.brand }}</span>
+                                <span class="price-tag {{ dupe.price_range }}">{{ dupe.price_range|title }}</span>
+                            </div>
+                            
+                            {% if dupe.notes %}
+                                <div class="dupe-notes">
+                                    <h4>Notes:</h4>
+                                    <p>{{ dupe.notes }}</p>
+                                </div>
+                            {% endif %}
+                            
+                            {% if dupe.dupes %}
+                                <div class="similar-to">
+                                    <h4>Similar to:</h4>
+                                    <p>{{ dupe.dupes }}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </section>
+            {% else %}
+                <section class="no-results">
+                    <p>No dupes found for "{{ original_fragrance }}". Try another fragrance or check your spelling.</p>
+                </section>
+            {% endif %}
+            
+            <section class="disclaimer">
+                <h3>Disclaimer</h3>
+                <p>Fragrance similarity is subjective and can vary from person to person. These recommendations are based on note composition and community feedback. We recommend sampling fragrances before purchasing.</p>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Fragrance Dupes Finder | Powered by Flask & ML</p>
+        </footer>
+    </div>
+</body>
+</html>

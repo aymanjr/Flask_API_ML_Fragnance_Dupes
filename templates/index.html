@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fragrance Dupes Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fragrance Dupes Finder</h1>
+            <p class="subtitle">Find affordable alternatives to your favorite fragrances</p>
+        </header>
+        
+        <main>
+            <section class="search-section">
+                <form action="/search" method="post" class="search-form">
+                    <div class="form-group">
+                        <label for="fragrance_name">Enter a fragrance name:</label>
+                        <input type="text" id="fragrance_name" name="fragrance_name" 
+                               placeholder="e.g., Aventus, Sauvage, Baccarat Rouge 540" required>
+                    </div>
+                    <button type="submit" class="search-button">Find Dupes</button>
+                </form>
+            </section>
+            
+            <section class="info-section">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Enter a Fragrance</h3>
+                            <p>Type the name of your favorite fragrance in the search box.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Machine Learning Magic</h3>
+                            <p>Our algorithm analyzes fragrance notes and characteristics.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Discover Dupes</h3>
+                            <p>Get a list of similar fragrances at various price points.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="popular-section">
+                <h2>Popular Searches</h2>
+                <div class="popular-fragrances">
+                    <a href="#" class="popular-item" onclick="document.getElementById('fragrance_name').value='Aventus'; return false;">Creed Aventus</a>
+                    <a href="#" class="popular-item" onclick="document.getElementById('fragrance_name').value='Baccarat Rouge 540'; return false;">Baccarat Rouge 540</a>
+                    <a href="#" class="popular-item" onclick="document.getElementById('fragrance_name').value='Sauvage'; return false;">Dior Sauvage</a>
+                    <a href="#" class="popular-item" onclick="document.getElementById('fragrance_name').value='Black Orchid'; return false;">Tom Ford Black Orchid</a>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Fragrance Dupes Finder | Powered by Flask & ML</p>
+        </footer>
+    </div>
+</body>
+</html>
